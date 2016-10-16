@@ -1,4 +1,4 @@
-import './helpers/polyfill'
+import './helpers/polyfills'
 
 import React from 'karet'
 import ReactDOM from 'react-dom'
@@ -12,6 +12,7 @@ import App from './components/App'
 import Debugger from './components/Debugger'
 import LocationEditor from './components/LocationEditor'
 import Context from './components/Context'
+import Editor from './components/Editor'
 import Location, {lensPath, lensTrimLeft, lensStartWith} from './helpers/location'
 
 const appState = Atom({})
@@ -46,9 +47,12 @@ const talkId = P(
   L.prop('id')
 )
 
+const scroll = Atom({x:0,y:0})
+
 ReactDOM.render(
   <Context {...{context}}>
     <App state={appState}>
+      <Editor className="editor" scrollTop={scroll.lens(L.prop('x'))} scrollLeft={scroll.lens(L.prop('y'))} />
 
       <Debugger>
         <LocationEditor />

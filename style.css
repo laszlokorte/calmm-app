@@ -15,8 +15,33 @@ body {
     font-family: sans-serif;
 }
 
-#app {
+.editor {
   width: 90%;
-  max-width: 20em;
-  margin: 10em auto 2em;
+  margin: 2em auto;
+  height: 20em;
+}
+
+.editor::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.editor::-webkit-scrollbar:vertical {
+    width: 1em;
+}
+
+.editor::-webkit-scrollbar:horizontal {
+    height: 1em;
+}
+
+.editor::-webkit-scrollbar-thumb {
+    border: 0.2em solid #ddd;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.editor::-webkit-scrollbar-track {
+    background-color: #ddd;
+}
+
+.editor::-webkit-scrollbar-corner {
+    background-color: #ddd;
 }

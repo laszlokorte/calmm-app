@@ -24,7 +24,7 @@ class LocationAtom extends AbstractMutable {
     this._maybeEmitValue(value)
   }
   _onActivation() {
-    const handleValue = evt => console.log(evt) || this._handleValue(getLocation())
+    const handleValue = evt => this._handleValue(getLocation())
     this._$handleValue = handleValue
     this._$handleValue(getLocation())
     window.addEventListener("hashchange", this._$handleValue)
