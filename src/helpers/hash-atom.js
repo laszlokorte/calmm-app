@@ -16,19 +16,19 @@ class HashAtom extends AbstractMutable {
     this._$handleValue = null
   }
   get() {
-    if (this._currentEvent)
+    if (this._currentEvent) {
       return this._currentEvent.value
-    else
-      return this._getFromSource()
+    } else {
+      return this._source._currentEvent.value
+    }
   }
   modify(fn) {
-    window.location.hash = fn(this.get())
+    const newValue = fn(this.get())
+    this._maybeEmitValue(newValue)
+    window.location.hash = newValue
   }
-  _getFromSource() {
-    return this._source._currentEvent.value
-  }
-  _handleValue() {
-    this._maybeEmitValue(this._getFromSource())
+  _handleValue(value) {
+    this._maybeEmitValue(value)
   }
   _onActivation() {
     const handleValue = value => this._handleValue(value)
