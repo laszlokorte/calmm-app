@@ -6,13 +6,13 @@
   "scripts": {
     "test": "ava",
     "build:js": "rollup -c rollup.config.js --environment NODE_ENV:production",
-    "watch:js": "rollup --watch -c rollup.config.js --environment NODE_ENV:production",
+    "watch:js": "rollup --watch -c rollup.config.js --environment NODE_ENV:development",
     "build:css": "postcss --use 'postcss-assets-rebase' --postcss-assets-rebase.assetsPath './build/assets/' --use 'postcss-import' --use autoprefixer --use cssnano -o ./build/style.min.css style.css",
     "watch:css": "postcss --use 'postcss-assets-rebase' --postcss-assets-rebase.assetsPath './build/assets/' --use 'postcss-import' --use autoprefixer --use cssnano -w -o ./build/style.min.css style.css",
-    "serve:static": "http-server -a 0.0.0.0 -p 3000 -c 20 -s -o",
     "watch": "npm-run-all -p -r watch:js watch:css",
     "build": "npm-run-all -p build:js build:css",
-    "dev": "npm-run-all -p -r watch serve:static"
+    "dev": "npm-run-all -p -r watch",
+    "open:dev": "open http://localhost:10001"
   },
   "author": "Laszlo Korte",
   "license": "ISC",
@@ -48,8 +48,10 @@
     "rollup-plugin-babel": "^2.6.1",
     "rollup-plugin-buble": "^0.14.0",
     "rollup-plugin-commonjs": "^5.0.5",
+    "rollup-plugin-livereload": "^0.1.0",
     "rollup-plugin-node-resolve": "^2.0.0",
     "rollup-plugin-replace": "^1.1.1",
+    "rollup-plugin-serve": "^0.1.0",
     "rollup-plugin-uglify": "^1.0.1",
     "rollup-watch": "^2.5.0"
   },

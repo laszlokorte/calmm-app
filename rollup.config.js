@@ -3,6 +3,10 @@ import nodeResolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import replace from 'rollup-plugin-replace';
 import uglify from 'rollup-plugin-uglify';
+import serve from 'rollup-plugin-serve';
+import livereload from 'rollup-plugin-livereload'
+
+const live = process.env.NODE_ENV === 'development'
 
 export default {
   entry: 'src/main.js',
@@ -27,6 +31,16 @@ export default {
     replace({
       'process.env.NODE_ENV': JSON.stringify( process.env.NODE_ENV )
     }),
-    uglify()
+    !live && uglify(),
+    live && serve({
+      contentBase: '',
+      historyApiFallback: true,
+      host: 'localhost',
+      port: 10001
+    }),
+    live && livereload({
+      watch: 'build',
+      applyJSLive: true,
+    }),
   ]
 };
