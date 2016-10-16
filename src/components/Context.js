@@ -1,5 +1,4 @@
 import React from 'karet'
-import {fromClass} from 'karet.util'
 
 export const types = {context: React.PropTypes.any}
 
