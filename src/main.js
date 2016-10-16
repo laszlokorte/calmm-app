@@ -15,7 +15,7 @@ const path = LocationHash()
 
 const userId = P(
   L.required('/'),
-  lensPath('/user/:id'),
+  lensPath('/user(/:id)'),
   L.valueOr({}),
   L.prop('id')
 )

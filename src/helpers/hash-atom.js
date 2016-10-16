@@ -47,11 +47,11 @@ export const lensPath = (pattern) => {
 
   return lens(
     (path) => p.match(path) || undefined,
-    (values, path) => {
+    (values, currentPath) => {
       try {
         return p.stringify(values)
       } catch (e) {
-        return undefined
+        return currentPath
       }
     }
   )
